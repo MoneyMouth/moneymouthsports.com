@@ -1,0 +1,116 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Register{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+        body {
+            background-color: #282828 !important;
+
+        }
+
+        h4 {
+            color:white
+
+        }
+
+        h5 {
+            color:red
+
+        }
+
+        h6 {
+            color:red
+
+        }
+
+        p {
+            color:white
+
+        }
+
+
+        .btn-secondary {
+            color:#999999;
+            background-color:#999999;
+            border-color:black;
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus,
+        .btn-secondary:active,
+        .btn-secondary.active,
+        .open .dropdown-toggle.btn-pressed {
+            color: #000000;
+            background-color:#999999;
+            border-color: #000000;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-3">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6" align="center">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <img src="images/logo.png" alt="MoneyMouth">
+                <br/>
+                <br/>
+                <br/>
+                <h4>Registration</h4>
+                <br/>
+                <br/>
+                <h5>
+                    {% for error in errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </h5>
+                <form name="user" method="post" action="/register">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="username" id="user_username"
+                               name="username" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="password" id="user_plainPassword_first"
+                               name="password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="confirm password" id="user_plainPassword_second"
+                               name="confirm_password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="name" id="user_name"
+                               name="name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control"  placeholder="email" id="user_email"
+                               name="email" required="required">
+                    </div>
+                    <button type="submit">Register!</button>
+                </form>
+
+                <br/>
+
+                <h6>Help</h6>
+
+            </div>
+
+            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-3">
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
