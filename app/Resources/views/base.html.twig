@@ -53,6 +53,15 @@
                     crossorigin="anonymous">
             </script>
         {% endblock %}
+
+        {% block footer %}
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <div class="container text-center">
+                    <h6>About | Contact | Advertise | Terms of Use | Support | Privacy | Mobile App | <a href="/logout" class="foot">Logout</a></h6>
+                    <h6>&copy; {{ "now" | date('Y') }} MoneyMouth LLC. All Rights Reserved.</h6>
+                </div>
+            </div>
+        {% endblock %}
     </body>
 </html>
 
