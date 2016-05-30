@@ -84,7 +84,7 @@ class RegisterController extends Controller
         $error = $validator->validate($request->get('email'), new Email());
         if($error->count()) {
             $errors[] = 'Invalid email.';
-        };
+        }
 
         if($request->get('password') !== $request->get('confirm_password')) {
             $errors[] = 'The passwords are not the same.';
