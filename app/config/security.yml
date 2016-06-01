@@ -6,10 +6,10 @@ security:
     providers:
         database:
             entity:
-              class: Moneymouth\User\User
+              class: Moneymouth\AppBundle\Entity\User
 
     encoders:
-      Moneymouth\User\User:
+      Moneymouth\AppBundle\Entity\User:
           algorithm: bcrypt
 
     firewalls:

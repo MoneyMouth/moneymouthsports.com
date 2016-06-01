@@ -2,6 +2,8 @@
 
 namespace Moneymouth\AppBundle\Controller;
 
+use Moneymouth\AppBundle\Entity\Pool;
+use Moneymouth\AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -12,9 +14,26 @@ class MyAccountController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('myaccount/index.html.twig', array(
-            // ...
-        ));
+        $user = $this->getUser();
+
+        $pools = $user->getPools();
+
+        return $this->render('myaccount/index.html.twig', [
+            'groupedPools' => $this->groupPools($pools)
+        ]);
+    }
+
+    private function groupPools($pools)
+    {
+        $groupedPools = [];
+
+        /** @var Pool $pool */
+        foreach($pools as $pool) {
+            $groupName = $pool->getGroup()->getName();
+            $groupedPools[$groupName][] = $pool;
+        }
+
+        return $groupedPools;
     }
 
 }

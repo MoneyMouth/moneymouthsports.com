@@ -1,6 +1,6 @@
 <?php
 
-namespace Moneymouth\User;
+namespace Moneymouth\AppBundle\Entity;
 
 use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -38,6 +38,15 @@ class User implements UserInterface, Serializable
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Pool")
+     * @ORM\JoinTable(name="user_pool",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="pool_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    private $pools;
 
     /**
      * @var array
@@ -137,6 +146,14 @@ class User implements UserInterface, Serializable
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPools()
+    {
+        return $this->pools;
     }
 
     /**

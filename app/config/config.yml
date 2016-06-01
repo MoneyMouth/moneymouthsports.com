@@ -61,6 +61,6 @@ doctrine:
         mappings:
             Moneymouth:
                 type: annotation
-                dir: '%kernel.root_dir%/../src/'
+                dir: '%kernel.root_dir%/../src/AppBundle/Entity'
                 is_bundle: false
                 prefix: Moneymouth
