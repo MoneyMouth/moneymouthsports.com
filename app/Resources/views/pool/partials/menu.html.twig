@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a class="btn btn-sample{{ app.request.pathinfo ends with '/standings' ? ' active' }}" type="button" href="/pool/{{ pool.id }}/standings">Standings</a>
+            <a class="btn btn-sample{{ app.request.pathinfo ends with '/mypicks' ? ' active' }}" type="button" href="/pool/{{ pool.id }}/mypicks">My Picks</a>
+            <a class="btn btn-sample{{ app.request.pathinfo ends with '/grouppicks' ? ' active' }}" type="button" href="/pool/{{ pool.id }}/grouppicks">Group Picks</a>
+            <a class="btn btn-sample{{ app.request.pathinfo ends with '/members' ? ' active' }}" type="button" href="/pool/{{ pool.id }}/members">Members</a>
+            <button type="button" class="btn btn-sample">Commish Tools</button>
+        </div>
+    </div>
+</div>

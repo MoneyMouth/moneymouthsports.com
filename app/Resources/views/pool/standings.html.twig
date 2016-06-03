@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - Standings{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="welcome1_table">
+            <tr><td colspan="3"><font size="4px">Standings</font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td><font color="red" size="3px"><div style='text-align: center'><u>Rank</u></div></font></td><td><font color="red" size="3px"><div style='text-align: left'><u>Member</u></div></font></td><td><font color="red" size="3px"><div style='text-align: center'><u>Points</u></div></font></td></tr>
+           <tr><td><div style='text-align: center'>1</div></td><td><font color="#000000">Jaco Pastor</font></td><td><div style='text-align: center'>28</div></td></tr>
+            <tr><td><div style='text-align: center'>2</div></td><td><font color="#000000">All Day Jay</font></td><td><div style='text-align: center'>25</div></td></tr>
+            <tr><td><div style='text-align: center'>3</div></td><td><font color="#000000">Hammer</font></td><td><div style='text-align: center'>24</div></td></tr>
+            <tr><td><div style='text-align: center'>4</div></td><td><font color="#000000">Sid the Kid</font></td><td><div style='text-align: center'>22</div></td></tr>
+            <tr><td><div style='text-align: center'>5</div></td><td><font color="#000000">Action Jackson</font></td><td><div style='text-align: center'>21</div></td></tr>
+            <tr><td><div style='text-align: center'>6</div></td><td><font color="#000000">Nevermind</font></td><td><div style='text-align: center'>18</div></td></tr>
+            <tr><td><div style='text-align: center'>7</div></td><td><font color="#000000">Sam</font></td><td><div style='text-align: center'>15</div></td></tr>
+            <tr><td><div style='text-align: center'>8</div></td><td><font color="#000000">Freddie P</font></td><td><div style='text-align: center'>14</div></td></tr>
+            <tr><td><div style='text-align: center'>9</div></td><td><font color="#000000">Nighttrain</font></td><td><div style='text-align: center'>12</div></td></tr>
+            <tr><td><div style='text-align: center'>10</div></td><td><font color="#000000">Easy Peasy</font></td><td><div style='text-align: center'>8</div></td></tr>
+               <tr><td colspan="3">&nbsp;</td></tr>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+        </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

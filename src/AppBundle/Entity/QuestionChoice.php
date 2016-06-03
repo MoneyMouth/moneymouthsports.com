@@ -17,7 +17,7 @@ class QuestionChoice
      *
      * @ORM\Column(name="label", type="string", length=255, nullable=false)
      */
-    private $label = '';
+    private $label;
 
     /**
      * @var integer
@@ -29,15 +29,33 @@ class QuestionChoice
     private $id;
 
     /**
-     * @var \Moneymouth\AppBundle\Entity\Question
-     *
-     * @ORM\ManyToOne(targetEntity="Moneymouth\AppBundle\Entity\Question")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="questionChoices")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     private $question;
 
+    /**
+     * @return mixed
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
 

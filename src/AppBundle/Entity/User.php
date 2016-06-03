@@ -2,6 +2,7 @@
 
 namespace Moneymouth\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,6 +50,15 @@ class User implements UserInterface, Serializable
     private $pools;
 
     /**
+     * @ORM\ManyToMany(targetEntity="QuestionChoice")
+     * @ORM\JoinTable(name="mypicks",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="choice_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    private $questionChoices;
+
+    /**
      * @var array
      */
     private $roles;
@@ -59,6 +69,7 @@ class User implements UserInterface, Serializable
         $this->password = $password;
         $this->name = $name;
         $this->email = $email;
+        $this->questionChoices = new ArrayCollection;
     }
 
     /**
@@ -67,6 +78,26 @@ class User implements UserInterface, Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    public function addChoice(QuestionChoice $questionChoice)
+    {
+        $this->questionChoices[] = $questionChoice;
+    }
+
+    public function removeAllChoices()
+    {
+        foreach($this->questionChoices as $choice) {
+            $this->questionChoices->removeElement($choice);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChoices()
+    {
+        return $this->questionChoices;
     }
 
     /**

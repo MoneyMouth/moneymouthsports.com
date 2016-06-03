@@ -1,5 +1,8 @@
+body {
+	background-color: #fff;
+}
 
-div.message { 
+div.message {
 	border: 2px solid #8D0D19;
 	color: #8D0D19; font-weight: bold;
 	margin: 1em 0 ; padding: 1em; 
@@ -12,329 +15,325 @@ div.message {
 }
 .error ul { padding-left: 2em; }
 
+a.foot {
+	color: white;
+}
 
-		
-		a.foot {
-			color: white;
-		}
-			
-		h6 {
-		color:white
-		}
-	
-		.welcome1_table {
-		margin:0px;padding:0px;
-		width:100%;
-		border:1px solid #666666;
-	    font-size:13px;
-		}
-		.welcome1_table table{
-			width:100%;
-			height:100%;
-			margin:0px;padding:0px;
-		}
-		.welcome1_table tr:last-child td:last-child {
-			-moz-border-radius-bottomright:9px;
-			-webkit-border-bottom-right-radius:9px;
-			border-bottom-right-radius:9px;
-		}
-		.welcome2_table table tr:first-child td:first-child {
-			-moz-border-radius-topleft:9px;
-			-webkit-border-top-left-radius:9px;
-			border-top-left-radius:9px;
-		}
-		.welcome1_table table tr:first-child td:last-child {
-			-moz-border-radius-topright:9px;
-			-webkit-border-top-right-radius:9px;
-			border-top-right-radius:9px;
-		}
-		.welcome1_table tr:last-child td:first-child{
-			-moz-border-radius-bottomleft:9px;
-			-webkit-border-bottom-left-radius:9px;
-			border-bottom-left-radius:9px;
-		}
-		.welcome1_table tr:nth-child(odd){ 
-			background-color:#EEEEEE; 
-		}
-		.welcome1_table tr:nth-child(even){
-			background-color:#EEEEEE; 
-		}
-		.welcome1_table tr:hover td{
-			background-color:#EEEEEE;
-		}
-		.welcome1_table tr:first-child td{
-			background:#FF0000;
-			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000");	
-			border:1px solid #000000;
-			text-align:center;
-			border-width:1px 1px 1px 1px;
-			font-family:Verdana, Geneva, Tahoma, sans-serif;
-			font-size:13px;
-			font-weight:bold;
-			color:#FFFFFF;
-			
-		}
-		.welcome1_table tr:first-child td:first-child{
-			border-width:0px 0px 1px 0px;
-		    text-align:center;
-		}
-		.welcome1_table tr:first-child td:last-child{
-			border-width:0px 0px 1px 1px;
-		    text-align:center;
-		}
-		.welcome1_table td{
-		
-			/*border:1px solid #000000;*/
-			border-width:0px 1px 1px 0px;
-			text-align:left;
-			padding:0px;
-			color:#000000;
-		    text-align:left;
-		    font-weight:bold;
-		    font-size:15px;
-			
-		}
-		.welcome1_table tr:last-child td{
-			border-width:0px 1px 0px 0px;
-		}
-		.welcome1_table tr td:last-child{
-			border-width:0px 0px 1px 0px;
-		}
-		.welcome1_table tr:last-child td:last-child{
-			border-width:0px 0px 0px 0px;
-		}
-		
-		.jumbotron {
-    		padding: 0.5em 0.6em;
-      	}
-    		   		
-    	.panel-default {
-  			background-color: #EEEEEE;
-		}
-		
-		.tableheading {
-			background-color: #FFFFFF !important;
-			font-weight:bold !important;
-		}
+h6 {
+	color:white
+}
+
+.welcome1_table {
+	margin:0px;padding:0px;
+	width:100%;
+	border:1px solid #666666;
+	font-size:13px;
+}
+.welcome1_table table{
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}
+.welcome1_table tr:last-child td:last-child {
+	-moz-border-radius-bottomright:9px;
+	-webkit-border-bottom-right-radius:9px;
+	border-bottom-right-radius:9px;
+}
+.welcome2_table table tr:first-child td:first-child {
+	-moz-border-radius-topleft:9px;
+	-webkit-border-top-left-radius:9px;
+	border-top-left-radius:9px;
+}
+.welcome1_table table tr:first-child td:last-child {
+	-moz-border-radius-topright:9px;
+	-webkit-border-top-right-radius:9px;
+	border-top-right-radius:9px;
+}
+.welcome1_table tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:9px;
+	-webkit-border-bottom-left-radius:9px;
+	border-bottom-left-radius:9px;
+}
+.welcome1_table tr:nth-child(odd){
+	background-color:#EEEEEE;
+}
+.welcome1_table tr:nth-child(even){
+	background-color:#EEEEEE;
+}
+.welcome1_table tr:hover td{
+	background-color:#EEEEEE;
+}
+.welcome1_table tr:first-child td{
+	background:#FF0000;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000");
+	border:1px solid #000000;
+	text-align:center;
+	border-width:1px 1px 1px 1px;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	color:#FFFFFF;
+
+}
+.welcome1_table tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+	text-align:center;
+}
+.welcome1_table tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+	text-align:center;
+}
+.welcome1_table td{
+
+	/*border:1px solid #000000;*/
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:0px;
+	color:#000000;
+	text-align:left;
+	font-weight:bold;
+	font-size:15px;
+
+}
+.welcome1_table tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.welcome1_table tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}
+.welcome1_table tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+.jumbotron {
+	padding: 0.5em 0.6em;
+}
+
+.panel-default {
+	background-color: #EEEEEE;
+}
+
+.tableheading {
+	background-color: #FFFFFF !important;
+	font-weight:bold !important;
+}
 
 
-		.heading {
-			background: #999999 !important;
-		}
-		
-		.btn-pressed { 
-		  color:white;
-		  background-color:blue;
-		  border-color:black; 
-		} 
-		
-		 
-		.btn-pressed:hover, 
-		.btn-pressed:focus, 
-		.btn-pressed:active, 
-		.btn-pressed.active, 
-		.open .dropdown-toggle.btn-pressed { 
-		  color: #ffffff; 
-		  background-color:blue; 
-		  border-color: #000000; 
-		} 
+.heading {
+	background: #999999 !important;
+}
 
-	.mypicks_table {
-			margin:0px;padding:0px;
-			width:60%;
-			border:2px solid #000000; /*Outside border*/
-			-moz-border-radius-bottomleft:9px;
-			-webkit-border-bottom-left-radius:9px;
-			border-bottom-left-radius:9px;
-			-moz-border-radius-bottomright:9px;
-			-webkit-border-bottom-right-radius:9px;
-			border-bottom-right-radius:9px;
-			-moz-border-radius-topright:9px;
-			-webkit-border-top-right-radius:9px;
-			border-top-right-radius:9px;
-			-moz-border-radius-topleft:9px;
-			-webkit-border-top-left-radius:9px;
-			border-top-left-radius:9px;
-		    font-size:13px;
-		}
-		.mypicks_table table{
-			width:100%;
-			height:100%;
-			margin:0px;padding:0px;
-		}
-		.mypicks_table tr:last-child td:last-child {
-			-moz-border-radius-bottomright:9px;
-			-webkit-border-bottom-right-radius:9px;
-			border-bottom-right-radius:9px;
-		}
-		.mypicks_table table tr:first-child td:first-child {
-			-moz-border-radius-topleft:9px;
-			-webkit-border-top-left-radius:9px;
-			border-top-left-radius:9px;
-		}
-		.mypicks_table table tr:first-child td:last-child {
-			-moz-border-radius-topright:9px;
-			-webkit-border-top-right-radius:9px;
-			border-top-right-radius:9px;
-		}
-		.mypicks_table tr:last-child td:first-child{
-			-moz-border-radius-bottomleft:9px;
-			-webkit-border-bottom-left-radius:9px;
-			border-bottom-left-radius:9px;
-		}
-		.mypicks_table tr:nth-child(odd){ 
-			background-color:#EEEEEE;
-		}
-		.mypicks_table tr:nth-child(even){
-			background-color:#EEEEEE; 
-		}
-		.mypicks_table tr:hover td{
-			background-color:#FFFF00;
-		}
-		.mypicks_table tr:first-child td{
-			background-color:#FF0000;	
-			text-align:center;
-			border-width:0px 0px 0px 0px;
-			font-size:19px;
-			font-weight:bold;
-			color:#FFFFFF;
-			
-		}
-		.mypicks_table tr:first-child td:first-child{
-			border-width:0px 0px 1px 0px;
-		    text-align:center;
-		}
-		.mypicks_table tr:first-child td:last-child{
-			border-width:0px 0px 1px 1px;
-		    text-align:center;
-		}
-		.mypicks_table td{
-		
-			border:1px solid #000000; /*table inside borders*/
-			border-width:0px 1px 1px 0px;
-			padding:2px;
-			color:#000000;
-		    text-align:center;
-		    font-weight:bold;
-			
-		}
-		.mypicks_table tr:last-child td{
-			border-width:0px 1px 0px 0px;
-		}
-		.mypicks_table tr td:last-child{
-			border-width:0px 0px 1px 0px;
-		}
-		.mypicks_table tr:last-child td:last-child{
-			border-width:0px 0px 0px 0px;
-		}
+.btn-pressed {
+  color:white;
+  background-color:blue;
+  border-color:black;
+}
 
-		
-		.btn-sample { 
-		  color: #ffffff; 
-		  background-color: #000000; 
-		  border-color: #000000; 
-		} 
-		 
-		.btn-sample:hover, 
-		.btn-sample:focus, 
-		.btn-sample:active, 
-		.btn-sample.active, 
-		.open .dropdown-toggle.btn-sample { 
-		  color: #ffffff; 
-		  background-color:blue; 
-		  border-color: #000000; 
-		} 
-		 
-		.btn-sample:active, 
-		.btn-sample.active, 
-		.open .dropdown-toggle.btn-sample { 
-		  background-image: none; 
-		} 
-		 
-		.btn-sample.disabled, 
-		.btn-sample[disabled], 
-		fieldset[disabled] .btn-sample, 
-		.btn-sample.disabled:hover, 
-		.btn-sample[disabled]:hover, 
-		fieldset[disabled] .btn-sample:hover, 
-		.btn-sample.disabled:focus, 
-		.btn-sample[disabled]:focus, 
-		fieldset[disabled] .btn-sample:focus, 
-		.btn-sample.disabled:active, 
-		.btn-sample[disabled]:active, 
-		fieldset[disabled] .btn-sample:active, 
-		.btn-sample.disabled.active, 
-		.btn-sample[disabled].active, 
-		fieldset[disabled] .btn-sample.active { 
-		  background-color: #000000; 
-		  border-color: #000000; 
-		} 
-		 
-		.btn-sample .badge { 
-		  color: #000000; 
-		  background-color: #ffffff; 
-		}	
-		
 
-    	.panel-default {
-  			background-color: #EEEEEE;
-		}
-		
-		.mypicks1_table {
-			margin:0px;padding:0px;
-			width:100%;
-			border:1px solid #000000; /*Outside border*/
-			font-size:13px;
-		}
-		.mypicks1_table table{
-			width:100%;
-			height:100%;
-			margin:0px;padding:0px;
-		}
-		
-		.mypicks1_table tr:nth-child(odd){ 
-			background-color:#EEEEEE;
-		}
-		.mypicks1_table tr:nth-child(even){
-			background-color:#EEEEEE; 
-		}
-		.mypicks1_table tr:hover td{
-			background-color:#ffff00;
-		}
-		.mypicks1_table tr:first-child td{
-			background-color:#ff0000;	
-			text-align:center;
-			border-width:0px 0px 0px 0px;
-			font-size:13px;
-			font-weight:bold;
-			color:#ffffff;
-			
-		}
-		.mypicks1_table tr:first-child td:first-child{
-			border-width:0px 0px 1px 0px;
-		    text-align:center;
-		}
-		.mypicks1_table tr:first-child td:last-child{
-			border-width:0px 0px 1px 1px;
-		    text-align:center;
-		}
-		.mypicks1_table td{
-		
-			border:3px solid #000000; /*table inside borders*/
-			border-width:0px 1px 1px 0px;
-			padding:3px;
-			color:#000000;
-		    text-align:center;
-		    font-weight:bold;	
-		}
-		.mypicks1_table tr:last-child td{
-			border-width:0px 1px 0px 0px;
-		}
-		.mypicks1_table tr td:last-child{
-			border-width:0px 0px 1px 0px;
-		}
-		.mypicks1_table tr:last-child td:last-child{
-			border-width:0px 0px 0px 1px;
-		}		
-		
-		
+.btn-pressed:hover,
+.btn-pressed:focus,
+.btn-pressed:active,
+.btn-pressed.active,
+.open .dropdown-toggle.btn-pressed {
+  color: #ffffff;
+  background-color:blue;
+  border-color: #000000;
+}
+
+.mypicks_table {
+	margin:0px;padding:0px;
+	width:60%;
+	border:2px solid #000000; /*Outside border*/
+	-moz-border-radius-bottomleft:9px;
+	-webkit-border-bottom-left-radius:9px;
+	border-bottom-left-radius:9px;
+	-moz-border-radius-bottomright:9px;
+	-webkit-border-bottom-right-radius:9px;
+	border-bottom-right-radius:9px;
+	-moz-border-radius-topright:9px;
+	-webkit-border-top-right-radius:9px;
+	border-top-right-radius:9px;
+	-moz-border-radius-topleft:9px;
+	-webkit-border-top-left-radius:9px;
+	border-top-left-radius:9px;
+	font-size:13px;
+}
+.mypicks_table table{
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}
+.mypicks_table tr:last-child td:last-child {
+	-moz-border-radius-bottomright:9px;
+	-webkit-border-bottom-right-radius:9px;
+	border-bottom-right-radius:9px;
+}
+.mypicks_table table tr:first-child td:first-child {
+	-moz-border-radius-topleft:9px;
+	-webkit-border-top-left-radius:9px;
+	border-top-left-radius:9px;
+}
+.mypicks_table table tr:first-child td:last-child {
+	-moz-border-radius-topright:9px;
+	-webkit-border-top-right-radius:9px;
+	border-top-right-radius:9px;
+}
+.mypicks_table tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:9px;
+	-webkit-border-bottom-left-radius:9px;
+	border-bottom-left-radius:9px;
+}
+.mypicks_table tr:nth-child(odd){
+	background-color:#EEEEEE;
+}
+.mypicks_table tr:nth-child(even){
+	background-color:#EEEEEE;
+}
+.mypicks_table tr:hover td{
+	background-color:#FFFF00;
+}
+.mypicks_table tr:first-child td{
+	background-color:#FF0000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:19px;
+	font-weight:bold;
+	color:#FFFFFF;
+
+}
+.mypicks_table tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+	text-align:center;
+}
+.mypicks_table tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+	text-align:center;
+}
+.mypicks_table td{
+
+	border:1px solid #000000; /*table inside borders*/
+	border-width:0px 1px 1px 0px;
+	padding:2px;
+	color:#000000;
+	text-align:center;
+	font-weight:bold;
+
+}
+.mypicks_table tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.mypicks_table tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}
+.mypicks_table tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+
+.btn-sample {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-sample:hover,
+.btn-sample:focus,
+.btn-sample:active,
+.btn-sample.active,
+.open .dropdown-toggle.btn-sample {
+  color: #ffffff;
+  background-color:blue;
+  border-color: #000000;
+}
+
+.btn-sample:active,
+.btn-sample.active,
+.open .dropdown-toggle.btn-sample {
+  background-image: none;
+}
+
+.btn-sample.disabled,
+.btn-sample[disabled],
+fieldset[disabled] .btn-sample,
+.btn-sample.disabled:hover,
+.btn-sample[disabled]:hover,
+fieldset[disabled] .btn-sample:hover,
+.btn-sample.disabled:focus,
+.btn-sample[disabled]:focus,
+fieldset[disabled] .btn-sample:focus,
+.btn-sample.disabled:active,
+.btn-sample[disabled]:active,
+fieldset[disabled] .btn-sample:active,
+.btn-sample.disabled.active,
+.btn-sample[disabled].active,
+fieldset[disabled] .btn-sample.active {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-sample .badge {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+
+.panel-default {
+	background-color: #EEEEEE;
+}
+
+.mypicks1_table {
+	margin:0px;padding:0px;
+	width:100%;
+	border:1px solid #000000; /*Outside border*/
+	font-size:13px;
+}
+.mypicks1_table table{
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}
+
+.mypicks1_table tr:nth-child(odd){
+	background-color:#EEEEEE;
+}
+.mypicks1_table tr:nth-child(even){
+	background-color:#EEEEEE;
+}
+.mypicks1_table tr:hover td{
+	background-color:#ffff00;
+}
+.mypicks1_table tr:first-child td{
+	background-color:#ff0000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:13px;
+	font-weight:bold;
+	color:#ffffff;
+
+}
+.mypicks1_table tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+	text-align:center;
+}
+.mypicks1_table tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+	text-align:center;
+}
+.mypicks1_table td{
+
+	border:3px solid #000000; /*table inside borders*/
+	border-width:0px 1px 1px 0px;
+	padding:3px;
+	color:#000000;
+	text-align:center;
+	font-weight:bold;
+}
+.mypicks1_table tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.mypicks1_table tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}
+.mypicks1_table tr:last-child td:last-child{
+	border-width:0px 0px 0px 1px;
+}

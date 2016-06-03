@@ -1,34 +1,15 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Moneymouth: My Account{% endblock %}
+{% block title %}MoneyMouth: My Account{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="css/public.css" media="all" rel="stylesheet" type="text/css"/>
-    <link href="css/myaccount.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="/css/myaccount.css" media="all" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block body %}
-<div class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-        <a href="#" class="pull-left"><img src="images/logo.png"></a>
 
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-
-        <div class="collapse navbar-collapse navHeaderCollapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">My Pools</a></li>
-                <li><a href="#">Join Pool</a></li>
-                <li><a href="#">Create Pool</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <div class="jumbotron">
@@ -43,21 +24,29 @@
                 <tr>
                     <td colspan="3"><span style="font-size: 18px">My Pools</span></td>
                 </tr>
-                {% for group, pools in groupedPools %}
+                {% if groupedPools %}
+                    {% for group, pools in groupedPools %}
+                        <tr>
+                            <td colspan="3">
+                                <div style="color: red;font-size: 18px; padding: 7px"><u>{{ group }}</u></div>
+                            </td>
+                        </tr>
+
+                        {% for pool in pools %}
+                            <tr>
+                                <td  style="padding-left: 10px; padding-bottom: 7px">{{ pool.type }}</td>
+                                <td>{{ pool.name }}</td>
+                                <td><a href="/pool/{{ pool.id }}/standings" class="main">view</a></td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
                     <tr>
-                        <td colspan="3">
-                            <div style="color: red;font-size: 18px; padding: 7px"><u>{{ group }}</u></div>
+                        <td colspan="3" style="padding: 10px;">
+                            You have not joined any pools yet.
                         </td>
                     </tr>
-
-                    {% for pool in pools %}
-                        <tr>
-                            <td  style="padding-left: 10px; padding-bottom: 7px">{{ pool.type }}</td>
-                            <td>{{ pool.name }}</td>
-                            <td><a href="/pool/{{ pool.id }}" class="main">view</a></td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
+                {% endif %}
             </table>
         </div>
 

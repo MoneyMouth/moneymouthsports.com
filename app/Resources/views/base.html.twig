@@ -12,6 +12,28 @@
         {% endblock %}
     </head>
     <body>
+        {% block navbar %}
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <a href="#" class="pull-left"><img src="/images/logo.png"></a>
+
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="collapse navbar-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">My Pools</a></li>
+                        <li><a href="#">Join Pool</a></li>
+                        <li><a href="#">Create Pool</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

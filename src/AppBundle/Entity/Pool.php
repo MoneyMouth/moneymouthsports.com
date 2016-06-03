@@ -2,6 +2,7 @@
 
 namespace Moneymouth\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,14 +37,24 @@ class Pool
     private $id;
 
     /**
-     * @var \Moneymouth\AppBundle\Entity\PoolGroup
+     * @var PoolGroup
      *
-     * @ORM\ManyToOne(targetEntity="Moneymouth\AppBundle\Entity\PoolGroup")
+     * @ORM\ManyToOne(targetEntity="PoolGroup")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
      * })
      */
     private $group;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Question",mappedBy="pool")
+     */
+    private $questions;
+
+    public function __construct()
+    {
+        $this->questions = new ArrayCollection;
+    }
 
     /**
      * @return string
@@ -75,6 +86,14 @@ class Pool
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * @return Question collection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }
 

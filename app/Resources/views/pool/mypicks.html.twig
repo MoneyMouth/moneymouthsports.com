@@ -1,0 +1,70 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - My Picks{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/pool/{{ pool.id }}/mypicks" method="post">
+                <table class="mypicks_table" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3"><span style="font-size: 18px">My Picks</span></td>
+                    </tr>
+                    <tr class="tableheading">
+                        <td style="text-align:center; font-size:17px">Prop</td>
+                        <td colspan="2" style="text-align:center; font-size:17px">Pick</td>
+                    </tr>
+
+                    {% if groupedQuestions %}
+                        {% for group, questions in groupedQuestions %}
+                            <tr class="heading">
+                                <td colspan="3" style="text-align:center; color:white; font-size:15px;"><strong>{{ group }}</strong></td>
+                            </tr>
+                            {% for question in questions %}
+                                <tr>
+                                    <td style="text-align:left;">{{ question.name }}</td>
+                                    <td style="text-align:right">
+                                        {{ question.choices[0].label }}
+                                        <input type="radio" name="question[{{ question.id }}]"
+                                               value="{{ question.choices[0].id }}"
+                                               {{ question.choices[0].id in userChoices ? 'checked' }} >
+                                    </td>
+                                    <td style="text-align:right">
+                                        {{ question.choices[1].label }}
+                                        <input type="radio" name="question[{{ question.id }}]"
+                                               value="{{ question.choices[1].id }}"
+                                               {{ question.choices[1].id in userChoices ? 'checked' }}>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                    <tr class="heading">
+                        <td colspan="3" style="text-align:center; color:white; font-size:15px;"><strong>Not questions defined yet.</strong></td>
+                    </tr>
+                    {% endif %}
+
+                    <tr>
+                        <td colspan="3" style="text-align:center;" bgcolor="#999999">
+                            <input class="button-md" type="submit" name="submit" value="Save" >
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+</div>
+
+
+{% endblock %}
