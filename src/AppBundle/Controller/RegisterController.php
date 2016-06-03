@@ -2,7 +2,7 @@
 
 namespace Moneymouth\AppBundle\Controller;
 
-use Moneymouth\User\User;
+use Moneymouth\AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
