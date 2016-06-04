@@ -22,19 +22,19 @@
         <div class="col-md-6">
             <table class="welcome1_table">
                 <tr>
-                    <td colspan="3"><span style="font-size: 18px">My Pools</span></td>
+                    <td colspan="3" class="top-table-header" style="font-size: 18px">My Pools</td>
                 </tr>
                 {% if groupedPools %}
                     {% for group, pools in groupedPools %}
                         <tr>
-                            <td colspan="3">
-                                <div style="color: red;font-size: 18px; padding: 7px"><u>{{ group }}</u></div>
+                            <td colspan="3" style="padding-bottom: 0">
+                                <div style="color: red;font-size: 18px"><u>{{ group }}</u></div>
                             </td>
                         </tr>
 
                         {% for pool in pools %}
                             <tr>
-                                <td  style="padding-left: 10px; padding-bottom: 7px">{{ pool.type }}</td>
+                                <td>{{ pool.type }}</td>
                                 <td>{{ pool.name }}</td>
                                 <td><a href="/pool/{{ pool.id }}/standings" class="main">view</a></td>
                             </tr>
@@ -42,7 +42,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="3" style="padding: 10px;">
+                        <td colspan="3">
                             You have not joined any pools yet.
                         </td>
                     </tr>
