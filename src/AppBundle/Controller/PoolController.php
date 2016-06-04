@@ -7,11 +7,13 @@ use Moneymouth\AppBundle\Entity\Pool;
 use Moneymouth\AppBundle\Entity\Question;
 use Moneymouth\AppBundle\Entity\QuestionChoice;
 use Moneymouth\AppBundle\Entity\User;
+use Moneymouth\AppBundle\Repository\Pool\PoolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PoolController extends Controller
 {
@@ -20,8 +22,14 @@ class PoolController extends Controller
      */
     public function standings(Pool $pool)
     {
+        /** @var PoolRepository $repository */
+        $repository = $this->get(PoolRepository::class);
+
+        $standings = $repository->getStandingsReport($pool);
+
         return $this->render('pool/standings.html.twig', [
-            'pool' => $pool
+            'pool' => $pool,
+            'standings' => $standings
         ]);
     }
 
@@ -34,6 +42,15 @@ class PoolController extends Controller
         /** @var User $user */
         $user = $this->getUser();
         $userQuestionChoices = $user->getChoices();
+
+        if(! $this->isUserJoinedThePool($pool)) {
+            $this->addFlash(
+                'error',
+                'To access the pool "' . $pool->getName() . '" you have to join it first.'
+            );
+
+            return new RedirectResponse('/');
+        }
 
         $groupedQuestions = [];
         $questions = $pool->getQuestions();
@@ -70,6 +87,10 @@ class PoolController extends Controller
         /** @var User $user */
         $user = $this->getUser();
 
+        if(! $this->isUserJoinedThePool($pool)) {
+            return new RedirectResponse('/');
+        }
+
         //First remove all previous choices
         $user->removeAllChoices();
 
@@ -82,8 +103,72 @@ class PoolController extends Controller
             }
             $em->persist($user);
             $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
         }
 
         return new RedirectResponse($request->getPathInfo());
+    }
+
+    /**
+     * @Route("/pool/{id}/members")
+     */
+    public function members(Pool $pool)
+    {
+        if(! $this->isUserJoinedThePool($pool)) {
+            $this->addFlash(
+                'error',
+                'To access the pool "' . $pool->getName() . '" you have to join it first.'
+            );
+
+            return new RedirectResponse('/');
+        }
+
+        $users = $pool->getUsers();
+
+        return $this->render('pool/members.html.twig', [
+            'pool' => $pool,
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * @Route("/pool/{id}/grouppicks")
+     */
+    public function grouppicks(Pool $pool)
+    {
+        if(! $this->isUserJoinedThePool($pool)) {
+            $this->addFlash(
+                'error',
+                'To access the pool "' . $pool->getName() . '" you have to join it first.'
+            );
+
+            return new RedirectResponse('/');
+        }
+
+        /** @var PoolRepository $repository */
+        $repository = $this->get(PoolRepository::class);
+        $groupPicks = $repository->getGroupPicksReport($pool);
+
+        $userPicks = [];
+        foreach($groupPicks as $groupPick) {
+            $userPicks[$groupPick['username']][] = $groupPick['label'];
+        }
+
+        return $this->render('pool/grouppicks.html.twig', [
+            'pool' => $pool,
+            'questions' => $pool->getQuestions(),
+            'userPicks' => $userPicks
+        ]);
+    }
+
+    public function isUserJoinedThePool(Pool $pool)
+    {
+        $user = $this->getUser();
+        $pools = $user->getPools();
+        return $pools->contains($pool);
     }
 }

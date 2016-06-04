@@ -329,11 +329,29 @@ fieldset[disabled] .btn-sample.active {
 	font-weight:bold;
 }
 .mypicks1_table tr:last-child td{
-	border-width:0px 1px 0px 0px;
+	border-width:0 1px 0 0;
 }
 .mypicks1_table tr td:last-child{
-	border-width:0px 0px 1px 0px;
+	border-width:0 0 1px 0;
 }
 .mypicks1_table tr:last-child td:last-child{
-	border-width:0px 0px 0px 1px;
+	border-width:0 0 0 1px;
+}
+
+table.welcome1_table td span.header-row {
+    color: red;
+    font-size: 16px
+}
+
+table.welcome1_table{
+    border: 1px solid;
+}
+
+table.welcome1_table td {
+    padding: 10px;
+}
+
+table.welcome1_table td.top-table-header {
+    padding: 0;
+    font-size: 18px
 }

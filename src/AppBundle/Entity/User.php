@@ -41,11 +41,8 @@ class User implements UserInterface, Serializable
     private $password;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Pool")
-     * @ORM\JoinTable(name="user_pool",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="pool_id", referencedColumnName="id", unique=true)}
-     * )
+     * @ORM\ManyToMany(targetEntity="Pool", mappedBy="users")
+     * @ORM\JoinTable(name="user_pool")
      */
     private $pools;
 
@@ -70,6 +67,7 @@ class User implements UserInterface, Serializable
         $this->name = $name;
         $this->email = $email;
         $this->questionChoices = new ArrayCollection;
+        $this->pools = new ArrayCollection;
     }
 
     /**

@@ -13,51 +13,46 @@
 
 {% include "pool/partials/menu.html.twig" %}
 
-<div class="container">
-    {% if standings %}
+<div class="container" id="groupPicks">
+    {% if userPicks %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
 
             <table class="welcome1_table">
-                <tr><td colspan="3" class="top-table-header">Standings</td></tr>
+                <tr><td class="top-table-header" colspan="{{ questions|length + 1 }}"><span style="font-size: 18px">Group Picks</span></td></tr>
                 <tr>
                     <td>
                         <span class="header-row">
-                            <div><u>Rank</u></div>
+                            <div style='text-align: center'><u>Username</u></div>
                         </span>
                     </td>
+                    {% for question in questions %}
                     <td>
                         <span class="header-row">
-                            <div><u>Member</u></div>
+                            <div><u>{{ question.name }}</u></div>
                         </span>
                     </td>
-                    <td>
-                        <span class="header-row">
-                            <div><u>Points</u></div>
-                        </span>
-                    </td>
+                    {% endfor %}
                 </tr>
-                {% for rank, user in standings %}
+
+                {% for username, choices in userPicks %}
                     <tr>
                         <td>
-                            <span>{{ rank+1 }}</span>
+                            {{ username }}
                         </td>
-                        <td>
-                            <span>{{ user.name }}</span>
-                        </td>
-                        <td>
-                            <span>{{ user.points }}</span>
-                        </td>
+                        {% for choice in choices %}
+                            <td>
+                                <span>{{ choice }}</span>
+                            </td>
+                        {% endfor %}
                     </tr>
                 {% endfor %}
             </table>
 
         </div>
-
-        <div class="col-md-6"></div>
     </div>
     {% else %}
-        <div class="alert alert-info" role="alert">Nobody has voted yet.</div>
+        <div class="alert alert-info" role="alert">Nobody has joined yet.</div>
     {% endif %}
 </div>
 </br>

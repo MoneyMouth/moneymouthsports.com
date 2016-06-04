@@ -19,7 +19,7 @@ class MyAccountController extends Controller
         $pools = $user->getPools();
 
         return $this->render('myaccount/index.html.twig', [
-            'groupedPools' => $this->groupPools($pools)
+            'groupedPools' => $this->groupPools($pools),
         ]);
     }
 

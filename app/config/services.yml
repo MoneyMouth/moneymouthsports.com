@@ -7,3 +7,7 @@ services:
   Moneymouth\AppBundle\Security\Authenticator:
       class: Moneymouth\AppBundle\Security\Authenticator
       arguments: ['@security.password_encoder']
+
+  Moneymouth\AppBundle\Repository\Pool\PoolRepository:
+      class: Moneymouth\AppBundle\Repository\Pool\PoolRepository
+      arguments: ['@doctrine.orm.entity_manager']

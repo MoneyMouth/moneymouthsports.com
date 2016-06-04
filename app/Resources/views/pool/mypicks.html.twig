@@ -13,7 +13,8 @@
 
 {% include "pool/partials/menu.html.twig" %}
 
-<div class="container">
+<div class="container" style="margin-bottom: 70px">
+    {% if groupedQuestions %}
     <div class="row">
         <div class="col-md-6">
             <form action="/pool/{{ pool.id }}/mypicks" method="post">
@@ -26,7 +27,7 @@
                         <td colspan="2" style="text-align:center; font-size:17px">Pick</td>
                     </tr>
 
-                    {% if groupedQuestions %}
+
                         {% for group, questions in groupedQuestions %}
                             <tr class="heading">
                                 <td colspan="3" style="text-align:center; color:white; font-size:15px;"><strong>{{ group }}</strong></td>
@@ -49,12 +50,6 @@
                                 </tr>
                             {% endfor %}
                         {% endfor %}
-                    {% else %}
-                    <tr class="heading">
-                        <td colspan="3" style="text-align:center; color:white; font-size:15px;"><strong>Not questions defined yet.</strong></td>
-                    </tr>
-                    {% endif %}
-
                     <tr>
                         <td colspan="3" style="text-align:center;" bgcolor="#999999">
                             <input class="button-md" type="submit" name="submit" value="Save" >
@@ -64,6 +59,9 @@
             </form>
         </div>
       </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">No questions defined yet.</div>
+    {% endif %}
 </div>
 
 

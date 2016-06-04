@@ -14,39 +14,39 @@
 {% include "pool/partials/menu.html.twig" %}
 
 <div class="container">
-    {% if standings %}
+    {% if users %}
     <div class="row">
         <div class="col-md-6">
 
             <table class="welcome1_table">
-                <tr><td colspan="3" class="top-table-header">Standings</td></tr>
+                <tr><td colspan="3" class="top-table-header">Members</td></tr>
                 <tr>
                     <td>
                         <span class="header-row">
-                            <div><u>Rank</u></div>
+                            <div><u>Username</u></div>
                         </span>
                     </td>
                     <td>
                         <span class="header-row">
-                            <div><u>Member</u></div>
+                            <div><u>Name</u></div>
                         </span>
                     </td>
                     <td>
                         <span class="header-row">
-                            <div><u>Points</u></div>
+                            <div><u>Email</u></div>
                         </span>
                     </td>
                 </tr>
-                {% for rank, user in standings %}
+                {% for user in users %}
                     <tr>
                         <td>
-                            <span>{{ rank+1 }}</span>
+                            <span>{{ user.username }}</span>
                         </td>
                         <td>
                             <span>{{ user.name }}</span>
                         </td>
                         <td>
-                            <span>{{ user.points }}</span>
+                            <span>{{ user.email }}</span>
                         </td>
                     </tr>
                 {% endfor %}
@@ -57,7 +57,7 @@
         <div class="col-md-6"></div>
     </div>
     {% else %}
-        <div class="alert alert-info" role="alert">Nobody has voted yet.</div>
+        <div class="alert alert-info" role="alert">Nobody has joined yet.</div>
     {% endif %}
 </div>
 </br>

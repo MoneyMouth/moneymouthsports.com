@@ -47,6 +47,12 @@ class Pool
     private $group;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="pools")
+     * @ORM\JoinTable(name="user_pool")
+     */
+    private $users;
+
+    /**
      * @ORM\OneToMany(targetEntity="Question",mappedBy="pool")
      */
     private $questions;
@@ -54,6 +60,15 @@ class Pool
     public function __construct()
     {
         $this->questions = new ArrayCollection;
+        $this->users = new ArrayCollection;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 
     /**
