@@ -3,7 +3,6 @@
 namespace Moneymouth\AppBundle\Controller;
 
 use Moneymouth\AppBundle\Entity\Pool;
-use Moneymouth\AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -28,12 +27,11 @@ class MyAccountController extends Controller
         $groupedPools = [];
 
         /** @var Pool $pool */
-        foreach($pools as $pool) {
+        foreach ($pools as $pool) {
             $groupName = $pool->getGroup()->getName();
             $groupedPools[$groupName][] = $pool;
         }
 
         return $groupedPools;
     }
-
 }

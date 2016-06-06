@@ -17,19 +17,19 @@
     {% if userPicks %}
     <div class="row">
         <div class="col-md-12">
-
             <table class="welcome1_table">
                 <tr><td class="top-table-header" colspan="{{ questions|length + 1 }}"><span style="font-size: 18px">Group Picks</span></td></tr>
+                <tr><td colspan="{{ questions|length + 1 }}">&nbsp</td></tr>
                 <tr>
                     <td>
                         <span class="header-row">
-                            <div style='text-align: center'><u>Username</u></div>
+                            <div><u>Username</u></div>
                         </span>
                     </td>
                     {% for question in questions %}
                     <td>
                         <span class="header-row">
-                            <div><u>{{ question.name }}</u></div>
+                            <div title="{{ question.name }}"><u>{{ question.name | truncate(20, true) }}</u></div>
                         </span>
                     </td>
                     {% endfor %}
@@ -47,8 +47,8 @@
                         {% endfor %}
                     </tr>
                 {% endfor %}
+                <tr><td colspan="{{ questions|length + 1 }}">&nbsp</td></tr>
             </table>
-
         </div>
     </div>
     {% else %}

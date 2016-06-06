@@ -11,3 +11,8 @@ services:
   Moneymouth\AppBundle\Repository\Pool\PoolRepository:
       class: Moneymouth\AppBundle\Repository\Pool\PoolRepository
       arguments: ['@doctrine.orm.entity_manager']
+
+  twig.extension.text:
+      class: Twig_Extensions_Extension_Text
+      tags:
+        - { name: twig.extension }

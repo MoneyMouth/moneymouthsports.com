@@ -11,6 +11,7 @@ use Moneymouth\AppBundle\Repository\Pool\PoolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -91,6 +92,8 @@ class PoolController extends Controller
             return new RedirectResponse('/');
         }
 
+        $questionsCount = count($pool->getQuestions());
+
         //First remove all previous choices
         $user->removeAllChoices();
 
@@ -106,11 +109,33 @@ class PoolController extends Controller
 
             $this->addFlash(
                 'notice',
-                'Your changes were saved!'
+                $this->getSaveMypicksFlashMessage($request, $pool)
             );
         }
 
         return new RedirectResponse($request->getPathInfo());
+    }
+
+    /**
+     * @param Request $request
+     * @param Pool $pool
+     * @return string
+     */
+    private function getSaveMypicksFlashMessage(Request $request, Pool $pool)
+    {
+        $questionsCount = count($pool->getQuestions());
+
+        $submittedQuestionsCount = count($request->get('question'));
+
+        if($questionsCount === $submittedQuestionsCount) {
+            $message = 'Your picks are complete!';
+        } elseif($questionsCount > $submittedQuestionsCount) {
+            $message = 'Your picks are incomplete!';
+        } else {
+            throw new RuntimeException('The question count is incorrect');
+        }
+
+        return $message;
     }
 
     /**

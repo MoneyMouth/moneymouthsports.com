@@ -3,9 +3,11 @@
 namespace Moneymouth\AppBundle\Controller;
 
 use Moneymouth\AppBundle\Entity\User;
+use Moneymouth\AppBundle\Repository\User\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Validator\Constraints\Email;
 
 class RegisterController extends Controller
@@ -29,8 +31,8 @@ class RegisterController extends Controller
             $encoder = $this->get('security.password_encoder');
 
             $user = new User(
-                $request->get('username'),
-                $request->get('password'),
+                $request->get('_username'),
+                $request->get('_password'),
                 $request->get('name'),
                 $request->get('email')
             );
@@ -43,10 +45,9 @@ class RegisterController extends Controller
             $em->persist($user);
             $em->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+            $this->authenticateUser($user);
 
-            return $this->redirectToRoute('login');
+            return $this->redirect('/');
         } elseif($request->isMethod('POST')) {
             $errors = $this->validateForm($request);
         }
@@ -61,11 +62,22 @@ class RegisterController extends Controller
     private function validateForm(Request $request)
     {
         $errors = [];
-        if(empty($request->get('username'))) {
+
+        /** @var UserRepository $userRepo */
+        $userRepo = $this->getDoctrine()
+            ->getRepository('AppBundle:User');
+
+        $username = $request->get('_username');
+        $user = $userRepo->loadUserByUsername($username);
+        if(! is_null($user)) {
+            $errors[] = 'User name already exists. Please choose a different one.';
+        }
+
+        if(empty($username)) {
             $errors[] = 'Please enter your username.';
         }
 
-        if(empty($request->get('password'))) {
+        if(empty($request->get('_password'))) {
             $errors[] = 'Please enter the password.';
         }
 
@@ -86,16 +98,31 @@ class RegisterController extends Controller
             $errors[] = 'Invalid email.';
         }
 
-        if($request->get('password') !== $request->get('confirm_password')) {
+        if($request->get('_password') !== $request->get('confirm_password')) {
             $errors[] = 'The passwords are not the same.';
         }
 
         return $errors;
     }
 
+    /**
+     * @param Request $request
+     * @return bool
+     */
     private function isFormValid(Request $request)
     {
         return empty($this->validateForm($request));
+    }
+
+    /**
+     * @param User $user
+     */
+    private function authenticateUser(User $user)
+    {
+        $providerKey = 'secured_area'; // your firewall name
+        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+
+        $this->container->get('security.token_storage')->setToken($token);
     }
 
 }

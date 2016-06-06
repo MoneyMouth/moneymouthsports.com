@@ -348,7 +348,7 @@ table.welcome1_table{
 }
 
 table.welcome1_table td {
-    padding: 10px;
+    padding-left: 30px;
 }
 
 table.welcome1_table td.top-table-header {
