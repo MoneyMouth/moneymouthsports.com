@@ -180,7 +180,12 @@ class PoolController extends Controller
 
         $userPicks = [];
         foreach($groupPicks as $groupPick) {
-            $userPicks[$groupPick['username']][] = $groupPick['label'];
+            $userPicks[$groupPick['question']]['choices'][$groupPick['label']] = $groupPick['user_count'];
+        }
+
+        // Populate the users sum to calculate the percentage
+        foreach($userPicks as $question => $userPick) {
+            $userPicks[$question]['sum'] = array_sum($userPick['choices']);
         }
 
         return $this->render('pool/grouppicks.html.twig', [

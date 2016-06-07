@@ -40,11 +40,12 @@ class PoolRepository
         $connection = $this->entityManager->getConnection();
 
         $report = $connection->fetchAll('
-            SELECT u.username,q.`question`,qc.`label` FROM `mypicks` m
-            INNER JOIN `question_choice` qc ON m.`choice_id` = qc.`id`
+            SELECT q.`question`,qc.`label`, count(u.id) as user_count FROM question_choice qc
             INNER JOIN question q ON q.id = qc.question_id
-            INNER JOIN users u ON m.user_id = u.id
-            WHERE q.`pool_id` = 1
+            LEFT JOIN `mypicks` m ON m.`choice_id` = qc.`id`
+            LEFT JOIN users u ON m.user_id = u.id
+            WHERE q.`pool_id` = ?
+            GROUP BY q.`question`,qc.`label`;
         ', [$pool->getId()]);
 
         return $report;
