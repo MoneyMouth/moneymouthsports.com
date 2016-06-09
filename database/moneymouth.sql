@@ -48,7 +48,7 @@ CREATE TABLE `question` (
   KEY `question_group_id` (`question_group`),
   KEY `type` (`type_id`),
   CONSTRAINT `question_ibfk_1` FOREIGN KEY (`pool_id`) REFERENCES `pool` (`id`) ON UPDATE CASCADE,
-  CONSTRAINT `question_ibfk_2` FOREIGN KEY (`type`) REFERENCES `question_type` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `question_ibfk_2` FOREIGN KEY (`type_id`) REFERENCES `question_type` (`id`) ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
