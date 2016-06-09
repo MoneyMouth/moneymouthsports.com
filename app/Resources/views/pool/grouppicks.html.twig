@@ -20,21 +20,6 @@
             <table class="welcome1_table">
                 <tr><td class="top-table-header" colspan="3"><span style="font-size: 18px">Group Picks</span></td></tr>
                 <tr><td colspan="3">&nbsp</td></tr>
-                {#<tr>#}
-                    {#<td>#}
-                        {#<span class="header-row">#}
-                            {#<div><u>Username</u></div>#}
-                        {#</span>#}
-                    {#</td>#}
-                    {#{% for question in questions %}#}
-                    {#<td>#}
-                        {#<span class="header-row">#}
-                            {#<div title="{{ question.name }}"><u>{{ question.name | truncate(20, true) }}</u></div>#}
-                        {#</span>#}
-                    {#</td>#}
-                    {#{% endfor %}#}
-                {#</tr>#}
-
                 {% for question, choices in userPicks %}
                     <tr>
                         <td>
@@ -42,7 +27,7 @@
                         </td>
                         {% for choiceLabel, userCount in choices.choices %}
                             <td>
-                                <span>{{ choiceLabel }} ({{ userCount }}) {{ userCount/choices.sum*100 }}%</span>
+                                <span>{{ choiceLabel }} ({{ userCount }}) {{ choices.sum ? userCount/choices.sum*100 : '0' }}%</span>
                             </td>
                         {% endfor %}
                     </tr>
