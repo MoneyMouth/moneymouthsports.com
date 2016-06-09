@@ -35,18 +35,21 @@
                             {% for question in questions %}
                                 <tr>
                                     <td style="text-align:left;">{{ question.name }}</td>
-                                    <td style="text-align:right">
-                                        {{ question.choices[0].label }}
-                                        <input type="radio" name="question[{{ question.id }}]"
-                                               value="{{ question.choices[0].id }}"
-                                               {{ question.choices[0].id in userChoices ? 'checked' }} >
-                                    </td>
-                                    <td style="text-align:right">
-                                        {{ question.choices[1].label }}
-                                        <input type="radio" name="question[{{ question.id }}]"
-                                               value="{{ question.choices[1].id }}"
-                                               {{ question.choices[1].id in userChoices ? 'checked' }}>
-                                    </td>
+                                    {% if question.type.name == 'radio' %}
+                                        {% for choice in question.choices %}
+                                            <td style="text-align:right">
+                                                {{ choice.label }}
+                                                <input type="radio" name="question[{{ question.id }}]"
+                                                       value="{{ choice.id }}"
+                                                       {{ choice.id in userChoices ? 'checked' }} >
+                                            </td>
+                                        {% endfor %}
+                                    {% elseif question.type.name == 'text' %}
+                                        <td colspan="2">
+                                            <input type="text" placeholder="Enter you answer here" name="question[{{ question.id }}]"
+                                                   value="{{ userTieBreakerValue }}">
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         {% endfor %}

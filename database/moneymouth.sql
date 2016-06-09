@@ -25,16 +25,30 @@ CREATE TABLE `pool` (
   CONSTRAINT `pool_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `pool_group` (`id`) ON UPDATE CASCADE
 ) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `question_type` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `question_type` (`id`, `type`)
+VALUES
+  (1, 'radio'),
+  (2, 'text');
+
 CREATE TABLE `question` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `pool_id` INT(11) UNSIGNED NOT NULL,
   `question_group` VARCHAR(255) NOT NULL DEFAULT '',
   `question` VARCHAR(255) NOT NULL DEFAULT '',
   `correct_choice_id` INT(11) NOT NULL,
+  `type_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pool_id` (`pool_id`),
   KEY `question_group_id` (`question_group`),
-  CONSTRAINT `question_ibfk_1` FOREIGN KEY (`pool_id`) REFERENCES `pool` (`id`) ON UPDATE CASCADE
+  KEY `type` (`type_id`),
+  CONSTRAINT `question_ibfk_1` FOREIGN KEY (`pool_id`) REFERENCES `pool` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `question_ibfk_2` FOREIGN KEY (`type`) REFERENCES `question_type` (`id`) ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
@@ -64,6 +78,7 @@ CREATE TABLE `mypicks` (
   `question_id` INT(11) UNSIGNED DEFAULT NULL,
   `choice_id` INT(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id_2` (`user_id`,`question_id`),
   KEY `user_id` (`user_id`),
   KEY `question_id` (`question_id`),
   KEY `choice_id` (`choice_id`),

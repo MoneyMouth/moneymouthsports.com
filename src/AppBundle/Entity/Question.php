@@ -54,6 +54,13 @@ class Question
      */
     private $questionChoices;
 
+    /**
+     * @ORM\OneToOne(targetEntity="QuestionType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
+
+
     public function __construct()
     {
         $this->questionChoices = new ArrayCollection;
@@ -97,6 +104,14 @@ class Question
     public function getChoices()
     {
         return $this->questionChoices;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
 
