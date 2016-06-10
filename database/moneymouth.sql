@@ -27,11 +27,11 @@ CREATE TABLE `pool` (
 
 CREATE TABLE `question_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `question_type` (`id`, `type`)
+INSERT INTO `question_type` (`id`, `name`)
 VALUES
   (1, 'radio'),
   (2, 'text');
@@ -41,7 +41,7 @@ CREATE TABLE `question` (
   `pool_id` INT(11) UNSIGNED NOT NULL,
   `question_group` VARCHAR(255) NOT NULL DEFAULT '',
   `question` VARCHAR(255) NOT NULL DEFAULT '',
-  `correct_choice_id` INT(11) NOT NULL,
+  `correct_choice_id` INT(11) DEFAULT NULL,
   `type_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pool_id` (`pool_id`),
