@@ -77,6 +77,7 @@ CREATE TABLE `mypicks` (
   `user_id` INT(11) UNSIGNED DEFAULT NULL,
   `question_id` INT(11) UNSIGNED DEFAULT NULL,
   `choice_id` INT(11) UNSIGNED DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_2` (`user_id`,`question_id`),
   KEY `user_id` (`user_id`),
