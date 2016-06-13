@@ -123,6 +123,11 @@ h6 {
 	background: #999999 !important;
 }
 
+.heading td{
+	color:white !important;
+	font-size:15px;
+}
+
 .btn-pressed {
   color:white;
   background-color:blue;

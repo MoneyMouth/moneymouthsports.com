@@ -16,9 +16,9 @@
 <div class="container" style="margin-bottom: 70px">
     {% if groupedQuestions %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <form action="/pool/{{ pool.id }}/mypicks" method="post">
-                <table class="mypicks_table" width="100%" cellpadding="0" cellspacing="0">
+                <table class="mypicks_table" cellpadding="0" cellspacing="0">
                     <tr>
                         <td colspan="3"><span style="font-size: 18px">My Picks</span></td>
                     </tr>
@@ -30,7 +30,7 @@
 
                         {% for group, questions in groupedQuestions %}
                             <tr class="heading">
-                                <td colspan="3" style="text-align:center; color:white; font-size:15px;"><strong>{{ group }}</strong></td>
+                                <td colspan="3"><strong>{{ group }}</strong></td>
                             </tr>
                             {% for question in questions %}
                                 <tr>

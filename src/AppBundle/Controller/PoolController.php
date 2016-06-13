@@ -205,7 +205,10 @@ class PoolController extends Controller
 
         $userPicks = [];
         foreach ($groupPicks as $groupPick) {
-            $userPicks[$groupPick['question']]['choices'][$groupPick['label']] = $groupPick['user_count'];
+            $question = $groupPick['question'];
+            $choice = $groupPick['label'];
+            $userPicks[$question]['choices'][$choice] = $groupPick['user_count'];
+            $userPicks[$question]['question_group'] = $groupPick['question_group'];
         }
 
         // Populate the users sum to calculate the percentage

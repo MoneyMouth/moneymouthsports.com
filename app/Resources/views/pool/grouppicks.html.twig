@@ -17,10 +17,14 @@
     {% if userPicks %}
     <div class="row">
         <div class="col-md-12">
-            <table class="welcome1_table">
+            <table class="mypicks_table">
                 <tr><td class="top-table-header" colspan="3"><span style="font-size: 18px">Group Picks</span></td></tr>
-                <tr><td colspan="3">&nbsp</td></tr>
+                {% set previosGroup = "" %}
                 {% for question, choices in userPicks %}
+                    {% if choices.question_group != previosGroup %}
+                        {% set previosGroup = choices.question_group %}
+                        <tr class="heading"><td colspan="3">{{ choices.question_group }}</td></tr>
+                    {% endif %}
                     <tr>
                         <td>
                             {{ question }}
@@ -32,7 +36,6 @@
                         {% endfor %}
                     </tr>
                 {% endfor %}
-                <tr><td colspan="3">&nbsp</td></tr>
             </table>
         </div>
     </div>
