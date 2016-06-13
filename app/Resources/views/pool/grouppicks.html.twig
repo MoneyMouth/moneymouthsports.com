@@ -27,7 +27,7 @@
                         </td>
                         {% for choiceLabel, userCount in choices.choices %}
                             <td>
-                                <span>{{ choiceLabel }} ({{ userCount }}) {{ choices.sum ? userCount/choices.sum*100 : '0' }}%</span>
+                                <span>{{ choiceLabel }} ({{ userCount }}) {{ (choices.sum ? userCount/choices.sum*100 : '0') | round(2, 'floor') }}%</span>
                             </td>
                         {% endfor %}
                     </tr>
