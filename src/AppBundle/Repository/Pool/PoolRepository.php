@@ -23,13 +23,14 @@ class PoolRepository
         $connection = $this->entityManager->getConnection();
 
         $report = $connection->fetchAll('
-            SELECT count(`correct_choice_id`) AS points,m.user_id, u.name FROM `mypicks` m
-            INNER JOIN `question_choice` qc ON m.`choice_id` = qc.`id`
-            INNER JOIN question q ON q.id = qc.question_id AND qc.`id` = q.`correct_choice_id`
-            INNER JOIN users u ON m.user_id = u.id
-            WHERE q.`pool_id` = ?
-            GROUP BY user_id
-            ORDER BY points DESC
+            SELECT count(`correct_choice_id`) AS points,u.id, u.name FROM users u
+            INNER JOIN `user_pool` up ON up.`user_id` = u.`id`
+            LEFT JOIN `mypicks` m ON m.user_id = u.id
+            LEFT JOIN `question_choice` qc ON m.`choice_id` = qc.`id`
+            LEFT JOIN question q ON q.id = qc.question_id AND qc.`id` = q.`correct_choice_id`
+            WHERE up.`pool_id` = ?
+            GROUP BY u.id
+            ORDER BY points DESC, u.name ASC
         ', [$pool->getId()]);
 
         return $report;

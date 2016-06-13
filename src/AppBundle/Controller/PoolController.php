@@ -123,7 +123,9 @@ class PoolController extends Controller
                     /** @var UserRepository $userRepository */
                     $userRepository = $entityManager->getRepository(User::class);
 
-                    $userRepository->updateTieBreakerValue($user, $question, $choiceId);
+                    if($choiceId !== '') {
+                        $userRepository->updateTieBreakerValue($user, $question, (int)$choiceId);
+                    }
                 }
             }
             $em->persist($user);
