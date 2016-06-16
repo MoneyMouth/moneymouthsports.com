@@ -28,6 +28,13 @@ class Pool
     private $name = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="expiration_time", type="datetime")
+     */
+    private $expirationTime;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -57,8 +64,12 @@ class Pool
      */
     private $questions;
 
-    public function __construct()
+    public function __construct($id, $type, $name, \DateTime $expirationTime)
     {
+        $this->id = $id;
+        $this->type = $type;
+        $this->name = $name;
+        $this->expirationTime = $expirationTime;
         $this->questions = new ArrayCollection;
         $this->users = new ArrayCollection;
     }
@@ -109,6 +120,20 @@ class Pool
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExpired()
+    {
+        $now = new \DateTime("now");
+
+        if($this->expirationTime > $now) {
+            return false;
+        }
+
+        return true;
     }
 }
 

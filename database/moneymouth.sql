@@ -20,6 +20,7 @@ CREATE TABLE `pool` (
   `group_id` INT(11) UNSIGNED NOT NULL,
   `type` VARCHAR(255) NOT NULL DEFAULT '',
   `name` VARCHAR(255) NOT NULL DEFAULT '',
+  `expiration_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `group_id` (`group_id`),
   CONSTRAINT `pool_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `pool_group` (`id`) ON UPDATE CASCADE
