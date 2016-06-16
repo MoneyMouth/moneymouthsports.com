@@ -89,6 +89,14 @@ class PoolController extends Controller
      */
     public function saveMypicks(Request $request, Pool $pool)
     {
+        if($pool->isExpired()) {
+            $this->addFlash(
+                'error',
+                "This pool is expired, you can't make any changes."
+            );
+            return new RedirectResponse('/pool/' . $pool->getId() . '/mypicks');
+        }
+
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
         $questionChoices = $request->get('question');
