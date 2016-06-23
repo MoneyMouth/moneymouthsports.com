@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - Standings{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container" id="groupPicks">
+    {% if userPicks %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="mypicks_table">
+                <tr><td class="top-table-header" colspan="3"><span style="font-size: 18px">Group Picks</span></td></tr>
+                {% set previosGroup = "" %}
+                {% for question, choices in userPicks %}
+                    {% if choices.question_group != previosGroup %}
+                        {% set previosGroup = choices.question_group %}
+                        <tr class="heading"><td colspan="3">{{ choices.question_group }}</td></tr>
+                    {% endif %}
+                    <tr>
+                        <td>
+                            {{ question }}
+                        </td>
+                        {% for choiceLabel, userCount in choices.choices %}
+                            <td>
+                                <span>{{ choiceLabel }} ({{ userCount }}) {{ (choices.sum ? userCount/choices.sum*100 : '0') | round(2, 'floor') }}%</span>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Nobody has joined yet.</div>
+    {% endif %}
+</div>
+</br>
+</br>
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+    </div>
+</div>
+{% endblock %}

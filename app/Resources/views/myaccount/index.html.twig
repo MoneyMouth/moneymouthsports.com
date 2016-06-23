@@ -1,0 +1,140 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: My Account{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="/css/myaccount.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h3>Hello {{ app.user.username }}!</h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="welcome1_table">
+                <tr>
+                    <td colspan="3" class="top-table-header" style="font-size: 18px">My Pools</td>
+                </tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
+                {% if groupedPools %}
+                    {% for group, pools in groupedPools %}
+                        <tr>
+                            <td colspan="3" style="padding-bottom: 0">
+                                <div style="color: red;font-size: 18px"><u>{{ group }}</u></div>
+                            </td>
+                        </tr>
+
+                        {% for pool in pools %}
+                            <tr>
+                                <td>{{ pool.type }}</td>
+                                <td>{{ pool.name }}</td>
+                                <td><a href="/pool/{{ pool.id }}/standings" class="main">view</a></td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">
+                            You have not joined any pools yet.
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr><td colspan="3">&nbsp;</td></tr>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <table class="welcome2_table">
+            <tr><td colspan="3"><font size="4px">Open Pools</font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>NFL</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Pick Em</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Survivor</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Total Wins</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>NFL Postseason</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Superbowl Props</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>College Football</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Total Wins</div></td>
+            <td class="text-center"><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>College Football Postseason</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Bowl Pick Em</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td><font color="#000000"><u>create</u></font></td><td><font color="#000000"><u>join</u></font></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            </table>
+          </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6">
+        <table class="welcome3_table">
+            <tr><td colspan="3"><font size="4px">Upcoming Pools</font></td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>NBA</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Total Wins</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>NBA Postseason</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Finals Props</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>College Basketball</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Total Wins</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>College Basketball March Madness</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Brackets</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Team Draft</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+               <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>Golf</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Masters Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>US Open Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>British Open Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>PGA Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>Horse Racing</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Kentuck Derby Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Preakness Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Belmont Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>MLB</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Total Wins</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Team Draft</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"><font color="red" size="4px"><div style='float: left; text-align: left'><u>MLB Postseason</u></div></font></td></tr>
+            <tr><td><div style='float: left; text-align: left'>Betting</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td><div style='float: left; text-align: left'>World Series Props</div></td><td>&nbsp;&nbsp;</td><td><div style='text-align: center'><font color="#43C6DB">Open: 10/31/2016</font></div></td></tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+               </table>
+          </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+
+{% endblock %}

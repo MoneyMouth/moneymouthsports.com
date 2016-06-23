@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - Standings{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container">
+    {% if users %}
+    <div class="row">
+        <div class="col-md-6">
+
+            <table class="welcome1_table">
+                <tr><td colspan="3" class="top-table-header">Members</td></tr>
+                <tr><td colspan="3">&nbsp</td></tr>
+                <tr>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Username</u></div>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Name</u></div>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Email</u></div>
+                        </span>
+                    </td>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>
+                            <span>{{ user.username }}</span>
+                        </td>
+                        <td>
+                            <span>{{ user.name }}</span>
+                        </td>
+                        <td>
+                            <span>{{ user.email }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr><td colspan="3">&nbsp</td></tr>
+            </table>
+
+        </div>
+
+        <div class="col-md-6"></div>
+    </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Nobody has joined yet.</div>
+    {% endif %}
+</div>
+</br>
+</br>
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+    </div>
+</div>
+{% endblock %}

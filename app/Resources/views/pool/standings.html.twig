@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - Standings{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container">
+    {% if standings %}
+    <div class="row">
+        <div class="col-md-6">
+
+            <table class="welcome1_table">
+                <tr><td colspan="3" class="top-table-header">Standings</td></tr>
+                <tr><td colspan="3">&nbsp</td></tr>
+                <tr>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Rank</u></div>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Member</u></div>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="header-row">
+                            <div><u>Points</u></div>
+                        </span>
+                    </td>
+                </tr>
+                {% for rank, user in standings %}
+                    <tr>
+                        <td>
+                            <span>{{ rank+1 }}</span>
+                        </td>
+                        <td>
+                            <span>{{ user.name }}</span>
+                        </td>
+                        <td>
+                            <span>{{ user.points }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr><td colspan="3">&nbsp</td></tr>
+            </table>
+
+        </div>
+
+        <div class="col-md-6"></div>
+    </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Nobody has voted yet.</div>
+    {% endif %}
+</div>
+</br>
+</br>
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+    </div>
+</div>
+{% endblock %}

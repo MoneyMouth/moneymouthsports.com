@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MoneyMouth: Pool - My Picks{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/public.css" media="all" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+{% include "pool/partials/greeting.html.twig" %}
+
+{% include "pool/partials/menu.html.twig" %}
+
+<div class="container" style="margin-bottom: 70px">
+    {% if groupedQuestions %}
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/pool/{{ pool.id }}/mypicks" method="post">
+                <table class="mypicks_table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3"><span style="font-size: 18px">My Picks</span></td>
+                    </tr>
+                    <tr class="tableheading">
+                        <td style="text-align:center; font-size:17px">Prop</td>
+                        <td colspan="2" style="text-align:center; font-size:17px">Pick</td>
+                    </tr>
+                        {% for group, questions in groupedQuestions %}
+                            <tr class="heading">
+                                <td colspan="3"><strong>{{ group }}</strong></td>
+                            </tr>
+                            {% for question in questions %}
+                                <tr>
+                                    <td style="text-align:left;">{{ question.name }}</td>
+                                    {% if question.type.name == 'radio' %}
+                                        {% for choice in question.choices %}
+                                            <td style="text-align:right">
+                                                {{ choice.label }}
+                                                <input type="radio" name="question[{{ question.id }}]"
+                                                       value="{{ choice.id }}"
+                                                       {{ choice.id in userChoices ? 'checked' }}
+                                                       {{ pool.isExpired ? 'disabled' }}
+                                                >
+                                            </td>
+                                        {% endfor %}
+                                    {% elseif question.type.name == 'text' %}
+                                        <td colspan="2">
+                                            <input type="text" placeholder="Enter you answer here" name="question[{{ question.id }}]"
+                                                   value="{{ userTieBreakerValue }}"
+                                                    {{ pool.isExpired ? 'disabled' }}
+                                            >
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    {% if not pool.isExpired %}
+                        <tr>
+                            <td colspan="3" style="text-align:center;" bgcolor="#999999">
+                                <input class="button-md" type="submit" name="submit" value="Save" >
+                            </td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </form>
+        </div>
+      </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">No questions defined yet.</div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
